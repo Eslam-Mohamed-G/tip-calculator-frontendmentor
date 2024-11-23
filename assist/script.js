@@ -2,6 +2,7 @@
 const buttons = document.querySelectorAll('button');
 const bill = document.getElementById("bill");
 const person = document.getElementById("person");
+const custom = document.getElementById("custom");
 const amountResult = document.getElementById("amount");
 const totalResult = document.getElementById("total");
 const errorMessage = document.getElementById("error");
@@ -11,6 +12,7 @@ const message = document.getElementById("error-message")
 function calculateTip(tipPercentage) {
   const billValue = parseFloat(bill.value);
   const personValue = parseInt(person.value, 10);
+  
 
   // التحقق من صحة المدخلات
   if (!isValidPerson() || !isValidBill()) {
@@ -81,12 +83,36 @@ buttons.forEach((button) => {
       clearForm();
       return;
     }
-
+    custom.value = "";
     // استدعاء الحساب عند النقر على زر النسبة
     const tipPercentage = parseFloat(e.target.value);
     calculateTip(tipPercentage);
   });
 });
+
+// التعامل مع الإدخال المخصص
+function customInp() {
+  const customValue = parseFloat(custom.value);
+  const billValue = parseFloat(bill.value);
+  const personValue = parseInt(person.value, 10);
+
+  // التحقق من صحة القيم
+  if (isNaN(customValue) || customValue <= 0) {
+    showError("Enter a valid custom percentage.");
+    return;
+  }
+  if (!isValidBill() || !isValidPerson()) {
+    return;
+  }
+
+  // إجراء الحسابات
+  const totalTip = (billValue * customValue) / 100;
+  const tipPerPerson = totalTip / personValue;
+
+  // تحديث النتائج
+  updateResults(tipPerPerson, totalTip);
+}
+custom.addEventListener("input", customInp)
 
 // التحقق من المدخلات عند الكتابة
 bill.addEventListener("input", isValidBill);
@@ -96,6 +122,7 @@ person.addEventListener("input", isValidPerson);
 function clearForm() {
   bill.value = "";
   person.value = "";
+  custom.value ="";
   amountResult.textContent = "$0.00";
   totalResult.textContent = "$0.00";
   bill.style.border = "none";
