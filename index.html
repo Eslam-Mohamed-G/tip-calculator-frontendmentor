@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+  <link rel="stylesheet" href="./assist/style.css">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <!-- <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style> -->
+</head>
+<body>
+  <main>
+    <div class="container">
+      <!-- to make design responsev -->
+      <div class="row">
+        <!-- for calculator tip -->
+        <div class="leftDiv">
+          <!-- Bill value -->
+          <div class="form-control">
+            <label for="bill">Bill</label>
+            <div class="posRela">
+              <input type="text" id="bill" name="bill">
+              <img src="./images/icon-dollar.svg" alt="dollar">
+            </div>
+          </div>
+
+          <!-- abtn-container -->
+          <div class="btn">
+            <p>Select Tip %</p>
+            <!-- all button -->
+            <div class="btn-container">
+              <button value="5">5%</button>
+              <button value="10">10%</button>
+              <button value="15">15%</button>
+              <button value="25">25%</button>
+              <button value="50">50%</button>
+              <input type="text" name="custom" id="custom" placeholder="Custom">
+            </div>
+          </div>
+          <!-- Number of People  -->
+          <div class="form-control">
+            <div class="people">
+              <label for="person">Number of People</label>
+              <span>Can't be zero</span>
+            </div>
+            <input type="text" id="person" name="person">
+            <img src="./images/icon-person.svg" alt="person">
+          </div>
+        </div>
+
+        <div class="rightDiv">
+          <!-- Tip Amount -->
+          <div>
+            <p><h2>Tip Amount</h2> / person</p>
+            <span id="amount"></span>
+          </div>
+          <!-- Tip Amount -->
+          <!-- Total -->
+          <div>
+            <p><h2>Total</h2> / person</p>
+            <span id="amount"></span>
+          </div>
+          <!-- Total -->
+          <button>Reset</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="./assist/script.js"></script>
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>
