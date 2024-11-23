@@ -2,18 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Tip calculator app</title>
   <link rel="stylesheet" href="./assist/style.css">
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <!-- <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style> -->
 </head>
 <body>
   <main>
@@ -48,48 +40,45 @@
           <div class="form-control">
             <div class="people">
               <label for="person">Number of People</label>
-              <span>Can't be zero</span>
+              <span id="error">Can't be zero</span>
             </div>
-            <input type="text" id="person" name="person">
-            <img src="./images/icon-person.svg" alt="person">
+            <div class="posRela">
+              <input type="text" id="person" name="person">
+              <img src="./images/icon-person.svg" alt="person">
+            </div>
           </div>
+          <!-- Number of People  -->
         </div>
 
+
+        <!-- right Div -->
         <div class="rightDiv">
-          <!-- Tip Amount -->
           <div>
-            <p><h2>Tip Amount</h2> / person</p>
-            <span id="amount"></span>
+            <!-- Tip Amount -->
+            <div class="amount">
+              <span><h3>Tip Amount</h3> / person</span>
+              <span id="amount">$0.0</span>
+            </div>
+            <!-- Tip Amount -->
+            <!-- Total -->
+            <div class="total">
+              <span><h3>Total</h3> / person</span>
+              <span id="total">$0.0</span>
+            </div>
+            <!-- Total -->
           </div>
-          <!-- Tip Amount -->
-          <!-- Total -->
-          <div>
-            <p><h2>Total</h2> / person</p>
-            <span id="amount"></span>
-          </div>
-          <!-- Total -->
-          <button>Reset</button>
+          
+          <button id="reset" onclick="clear()">Reset</button>
         </div>
       </div>
+    </div>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Your Name Here</a>.
     </div>
   </main>
 
   <script src="./assist/script.js"></script>
   
-
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
 </body>
 </html>
