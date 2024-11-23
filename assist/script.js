@@ -1,10 +1,11 @@
-// 1. الحصول على جميع الأزرار باستخدام querySelectorAll.
+// الحصول على المراجع الأساسية
 const buttons = document.querySelectorAll('button');
-const bill = document.getElementById("bill")
-const person = document.getElementById("person")
-const amountResult = document.getElementById("amount"); 
-const totalResult = document.getElementById("total"); 
+const bill = document.getElementById("bill");
+const person = document.getElementById("person");
+const amountResult = document.getElementById("amount");
+const totalResult = document.getElementById("total");
 const errorMessage = document.getElementById("error");
+const message = document.getElementById("error-message")
 
 // وظيفة الحساب الرئيسية
 function calculateTip(tipPercentage) {
@@ -12,34 +13,55 @@ function calculateTip(tipPercentage) {
   const personValue = parseInt(person.value, 10);
 
   // التحقق من صحة المدخلات
-  if (!isValidPerson(personValue) || isNaN(billValue)) {
-    showError("can't be zero");
+  if (!isValidPerson() || !isValidBill()) {
+    showError("Check your inputs.");
     return;
   }
 
   // إجراء الحسابات
-  const totalTip = (billValue * tipPercentage) / 100;
+  const totalTip = billValue * tipPercentage / 100;
   const tipPerPerson = totalTip / personValue;
 
   // تحديث النتائج
   updateResults(tipPerPerson, totalTip);
 }
+
 // تحديث النتائج في واجهة المستخدم
 function updateResults(amount, total) {
   amountResult.textContent = `$${amount.toFixed(2)}`;
   totalResult.textContent = `$${total.toFixed(2)}`;
   hideError();
 }
+
 // التحقق من صحة عدد الأشخاص
-function isValidPerson(value) {
-  if (value < 1 || isNaN(value)) {
+function isValidPerson() {
+  const personValue = parseInt(person.value, 10);
+
+  if (isNaN(personValue) || personValue < 1) {
     person.style.border = "1px solid red";
-    showError("Number of people must be greater than 0.");
+    showError("can't be zero or empty.");
     return false;
+  } else {
+    person.style.border = "1px solid green";
+    hideError();
+    return true;
   }
-  person.style.border = "1px solid green";
-  return true;
 }
+
+// التحقق من صحة قيمة الفاتورة
+function isValidBill() {
+  const billValue = parseFloat(bill.value);
+
+  if (isNaN(billValue) || billValue <= 0) {
+    bill.style.border = "1px solid red";
+    return false;
+  } else {
+    bill.style.border = "1px solid green";
+    errorMessage.style.display = "none";
+    return true;
+  }
+}
+
 // عرض رسالة الخطأ
 function showError(message) {
   errorMessage.textContent = message;
@@ -50,11 +72,12 @@ function showError(message) {
 function hideError() {
   errorMessage.style.display = "none";
 }
+
 // إضافة مستمعات الأحداث للأزرار
 buttons.forEach((button) => {
-  button.addEventListener('click', (e) => {
+  button.addEventListener("click", (e) => {
     // التحقق من الزر المستهدف
-    if (e.target.id === 'reset') {
+    if (e.target.id === "reset") {
       clearForm();
       return;
     }
@@ -66,7 +89,8 @@ buttons.forEach((button) => {
 });
 
 // التحقق من المدخلات عند الكتابة
-person.addEventListener("input", () => isValidPerson(parseInt(person.value, 10)));
+bill.addEventListener("input", isValidBill);
+person.addEventListener("input", isValidPerson);
 
 // وظيفة إعادة التهيئة (التفريغ)
 function clearForm() {
@@ -74,9 +98,12 @@ function clearForm() {
   person.value = "";
   amountResult.textContent = "$0.00";
   totalResult.textContent = "$0.00";
+  bill.style.border = "none";
   person.style.border = "none";
   hideError();
 }
 
+// عند تحميل الصفحة
 window.addEventListener("DOMContentLoaded", clearForm);
+
 

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 :root{
     /* Primary */
     --Strong-cyan:             hsl(172, 67%, 45%);
@@ -51,8 +52,8 @@ main{
 .row{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 20px;
     max-width: 100%;
 }
 
@@ -60,7 +61,7 @@ main{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 50%;
+    max-width: 300px;
 }
 
 /* <!-- Bill value --> */
@@ -77,14 +78,13 @@ main{
     position: relative;
 }
 #bill{
+    width: 100%;
     color: var(--Very-dark-cyan);
     font-family: var(--font-family);
     font-weight: bold;
     text-align: right;
     font-size: 24px;
     padding-right: 15px;
-    outline: none;
-    border-radius: 5px;
 }
 .form-control img{
     display: block;
@@ -98,9 +98,6 @@ main{
 /* <!-- Bill value --> */
 
 /* <!-- abtn-container --> */
-.btn{
-    width: 100%;
-}
 .btn p{
     margin: 0;
     padding: 0;
@@ -136,8 +133,18 @@ main{
     border: none;
 }
 
+.people{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+#person{
+    padding-right: 15px;
+}
+
 .rightDiv{
-    max-width: 50%;
+    width: 300px;
     background-color: var(--Very-dark-cyan);
     border-radius: 15px;
     padding: 25px 20px;
@@ -168,12 +175,12 @@ main{
     align-items: center;
 }
 
-.rightDiv h3{
+.rightDiv h4{
     color: var(--Very-light-grayish-cyan);
 }
 
 #amount, #total{
-    font-size: 28px;
+    font-size: 38px;
     font-weight: 700;
 }
 
@@ -182,3 +189,25 @@ main{
     color: red;
 }
 
+@media  (max-width: 465px) {
+    .container{
+        max-width: 100%;
+    }
+    .row{
+        width: 99%;
+        flex-direction: column;
+    }
+    .leftDiv{
+        width: 100%;
+    }
+    .rightDiv{
+        width: 100%;
+    }
+    .btn-container button{
+        width: 131px;
+        font-size: 20px;
+    }
+    #custom{
+        width: 131px;
+    }
+}
